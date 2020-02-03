@@ -1,13 +1,11 @@
 package gui.panel;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 import entity.Category;
 import gui.listener.CategoryListener;
 import gui.model.CategoryTableModel;
@@ -42,6 +40,11 @@ public class CategoryPanel extends WorkingPanel {
         this.add(sp, BorderLayout.CENTER);
         this.add(pSubmit, BorderLayout.SOUTH);
 
+        addListener();
+    }
+
+    public static void main(String[] args) {
+        GUIUtil.showPanel(CategoryPanel.instance);
     }
 
     public Category getSelectedCategory() {
@@ -64,17 +67,11 @@ public class CategoryPanel extends WorkingPanel {
         }
     }
 
-    @Override
-    public void addListener(){
-        ActionListener l = new CategoryListener();
-        bAdd.addActionListener(l);
-        bDelete.addActionListener(l);
-        bEdit.addActionListener(l);
+    public void addListener() {
+        CategoryListener listener = new CategoryListener();
+        bAdd.addActionListener(listener);
+        bEdit.addActionListener(listener);
+        bDelete.addActionListener(listener);
     }
-
-    public static void main(String[] args) {
-        GUIUtil.showPanel(CategoryPanel.instance);
-    }
-
 
 }
