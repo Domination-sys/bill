@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="账本:jar">
+    <output-path>$PROJECT_DIR$/账本</output-path>
+    <root id="archive" name="账本.jar">
+      <element id="module-output" name="账本" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/账本/lib/chart.jar" path-in-jar="/" />
+      <element id="library" level="project" name="lombok-1.16.18" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/账本/lib/liquidlnf.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/账本/lib/swingx-core-1.6.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/账本/lib/mysql-connector-java-5.0.8-bin.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

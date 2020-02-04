@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaSE.iml" filepath="$PROJECT_DIR$/JavaSE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Object_Oriented/Object_Oriented.iml" filepath="$PROJECT_DIR$/Object_Oriented/Object_Oriented.iml" />
       <module fileurl="file://$PROJECT_DIR$/账本/账本.iml" filepath="$PROJECT_DIR$/账本/账本.iml" />
     </modules>
   </component>
