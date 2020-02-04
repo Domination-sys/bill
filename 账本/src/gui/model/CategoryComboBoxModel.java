@@ -52,7 +52,7 @@ public class CategoryComboBoxModel implements ComboBoxModel<Category>{
     @Override
     public Category getSelectedItem() {
         if(!cs.isEmpty())
-            return (Category) c;
+            return  c;
         else
             return null;
 

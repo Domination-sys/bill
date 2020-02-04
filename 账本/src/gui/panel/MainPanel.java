@@ -18,7 +18,7 @@ public class MainPanel extends JPanel{
     public JButton bCategory = new JButton();
     public JButton bReport = new JButton();
     public JButton bConfig = new JButton();
-    public JButton bBackup = new JButton();
+    public JButton bLogin = new JButton();
     public JButton bRecover = new JButton();
 
     public CenterPanel workingPanel;
@@ -29,15 +29,15 @@ public class MainPanel extends JPanel{
         GUIUtil.setImageIcon(bCategory, "category2.png", "消费分类");
         GUIUtil.setImageIcon(bReport, "report.png", "月消费报表");
         GUIUtil.setImageIcon(bConfig, "config.png", "设置");
-        GUIUtil.setImageIcon(bBackup, "backup.png", "备份");
-        GUIUtil.setImageIcon(bRecover, "restore.png", "恢复");
+        GUIUtil.setImageIcon(bLogin, "backup.png", "重新登录");
+        GUIUtil.setImageIcon(bRecover, "restore.png", "备份与恢复");
 
         tb.add(bSpend);
         tb.add(bRecord);
         tb.add(bCategory);
         tb.add(bReport);
         tb.add(bConfig);
-        tb.add(bBackup);
+        tb.add(bLogin);
         tb.add(bRecover);
         tb.setFloatable(false);
 
@@ -58,7 +58,7 @@ public class MainPanel extends JPanel{
         bCategory.addActionListener(listener);
         bReport.addActionListener(listener);
         bConfig.addActionListener(listener);
-        bBackup.addActionListener(listener);
+        bLogin.addActionListener(listener);
         bRecover.addActionListener(listener);
     }
 

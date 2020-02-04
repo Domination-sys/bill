@@ -55,8 +55,8 @@ public class RecordPanel extends WorkingPanel {
         GUIUtil.showPanel(RecordPanel.instance);
     }
 
-    public Object getSelectedCategory(){
-        return cbCategory.getSelectedItem();
+    public Category getSelectedCategory(){
+        return (Category) cbCategory.getSelectedItem();
     }
     @Override
     public void updateData() {

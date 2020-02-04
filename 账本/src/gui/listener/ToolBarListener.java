@@ -1,7 +1,6 @@
 package gui.listener;
 
 import gui.panel.*;
-import util.GUIUtil;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,8 +11,8 @@ public class ToolBarListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         MainPanel p = MainPanel.instance;
         JButton b = (JButton)e.getSource();
-        if (b == p.bBackup) {
-            p.workingPanel.show(BackupPanel.instance);
+        if (b == p.bLogin) {
+            p.workingPanel.show(LoginPanel.instance);
         }
         if (b == p.bCategory) {
             p.workingPanel.show(CategoryPanel.instance);

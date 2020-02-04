@@ -37,7 +37,9 @@ public class ConfigService {
     }
 
     public int getIntBudget() {
-        return Integer.parseInt(get(budget));
+        String s = get(budget);
+        s = s.replace(" ","");
+        return Integer.parseInt(s);
     }
 
 }

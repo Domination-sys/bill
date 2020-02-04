@@ -12,7 +12,7 @@ public class MainFrame extends JFrame {
     }
     public MainFrame(){
         setSize(450,500);
-        setTitle("账本");
+        setTitle("省钱谈恋爱 1.0");
         setContentPane(MainPanel.instance);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -21,6 +21,6 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new MainFrame();
+       new MainFrame();
     }
 }

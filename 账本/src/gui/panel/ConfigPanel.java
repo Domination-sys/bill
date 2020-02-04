@@ -1,7 +1,6 @@
 package gui.panel;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -9,9 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import entity.Login;
 import gui.listener.ConfigListener;
 import service.ConfigService;
+import service.LoginService;
 import util.ColorUtil;
+import util.DBUtil;
+import util.FileUtil;
 import util.GUIUtil;
 
 public class ConfigPanel extends WorkingPanel {
@@ -20,35 +23,48 @@ public class ConfigPanel extends WorkingPanel {
     }
     public static ConfigPanel instance = new ConfigPanel();
 
-    JLabel lBudget = new JLabel("本月预算(￥)");
-    public JTextField tfBudget = new JTextField("0");
-
-    JLabel lMysql = new JLabel("Mysql安装目录");
-    public JTextField tfMysqlPath = new JTextField("");
-
+    JLabel lBudget = new JLabel("本月预算(￥):          ");
+    public JTextField tfBudget = new JTextField(" ");
     JButton bSubmit = new JButton("更新");
+    Login login = DBUtil.login;
+    public JLabel lMyBudgt = new JLabel("本月的预算为:"+new ConfigService().get(ConfigService.budget));
+    JLabel lMysql = new JLabel("Mysql安装目录:"+ LoginService.getMysql()+"\n\n");
+    JLabel lUserName = new JLabel("连接mysql的用户名为:"+ login.loginName+"\n\n");
+    JLabel lPassword = new JLabel("连接mysql的密码为:"+ login.password+"\n\n");
+    JLabel lDatabaseName = new JLabel("连接的数据库为:"+ login.databaseName+"\n\n");
+    JLabel lSettingPath = new JLabel("设定文件:"+ FileUtil.path);
+    JPanel pInput =new JPanel();
+    public JPanel pRemind = new JPanel();
+
+
+
 
     public ConfigPanel() {
-        GUIUtil.setColor(ColorUtil.grayColor, lBudget,lMysql);
         GUIUtil.setColor(ColorUtil.blueColor, bSubmit);
 
-        JPanel pInput =new JPanel();
-        JPanel pSubmit = new JPanel();
-        int gap =40;
-        pInput.setLayout(new GridLayout(4,1,gap,gap));
-
+        tfBudget.setPreferredSize(new Dimension(100, 25));
         pInput.add(lBudget);
         pInput.add(tfBudget);
-        pInput.add(lMysql);
-        pInput.add(tfMysqlPath);
-        this.setLayout(new BorderLayout());
-        this.add(pInput,BorderLayout.NORTH);
-
-        pSubmit.add(bSubmit);
-        this.add(pSubmit,BorderLayout.CENTER);
-
+        pInput.add(bSubmit);
+        pRemind.setLayout(new GridLayout(6,1,10,10));
+        pRemind.add(lMyBudgt);
+        pRemind.add(lSettingPath);
+        pRemind.add(lUserName);
+        pRemind.add(lPassword);
+        pRemind.add(lDatabaseName);
+        pRemind.add(lMysql);
+        setLayout(new GridLayout(2,1,1,1));
+        add(pInput);
+        add(pRemind);
         addListener();
-
+    }
+    public void update(){
+        lMyBudgt.setText("本月的预算为:"+new ConfigService().get(ConfigService.budget));
+        pRemind.remove(0);
+        pRemind.add(lMyBudgt,0);
+        remove(pRemind);
+        add(pRemind);
+        repaint();
     }
 
     public static void main(String[] args)
@@ -58,11 +74,7 @@ public class ConfigPanel extends WorkingPanel {
 
     @Override
     public void updateData() {
-        String budget = new ConfigService().get(ConfigService.budget);
-        String mysqlPath = new ConfigService().get(ConfigService.mysqlPath);
-        tfBudget.setText(budget);
-        tfMysqlPath.setText(mysqlPath);
-        tfBudget.grabFocus();
+        lMyBudgt = new JLabel("本月的预算为:"+new ConfigService().get(ConfigService.budget));
     }
 
     @Override
