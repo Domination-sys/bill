@@ -3,11 +3,9 @@ package gui.listener;
 import entity.Login;
 import gui.frame.FirstFrame;
 import gui.frame.MainFrame;
-import gui.panel.LoginPanel;
 import gui.panel.MainPanel;
 import gui.panel.SpendPanel;
 import service.FirstService;
-import startup.Bootstrap;
 import util.FileUtil;
 
 import javax.swing.*;
@@ -37,12 +35,12 @@ public class FirstListener implements ActionListener {
                 return;
             }
             if(FirstService.isConnect(login)){
-                FirstService.createTable();
                 String message = "连接成功，\n" +
                         "设定档已保存至"+FileUtil.path+"，\n" +
                         "可到【设置】中查看登陆信息。\n\n已自动为您建表";
                 JOptionPane.showMessageDialog(f, message);
                 FileUtil.writeSetting(login);
+                FirstService.createTable();
                 MainFrame.instance.setVisible(true);
                 MainPanel.instance.workingPanel.show(SpendPanel.instance);
                 FirstFrame.instance.dispose();
